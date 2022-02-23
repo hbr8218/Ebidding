@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+  <a class="btn btn-danger" href="{% url 'common:logout' %}" role="button">Log out</a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">bid Price</th>
+            <th scope="col">Bidding</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if items %}
+          {% for item in items %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.bid_price}}</td>
+            <td>
+              {% if item.price_bid %}
+              {{item.price_bid}}
+              {% else %}
+              <a href="{% url 'common:bidNow' item.id %}" class="btn btn-primary">Bid Now</a>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}

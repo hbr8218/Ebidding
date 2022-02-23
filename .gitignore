@@ -1,0 +1,9 @@
+common/__pycache__/
+common/migrations/
+db.sqlite3
+demo_admin/__pycache__/
+demo_admin/migrations/
+mysite/__pycache__/
+static/css/.DS_Store
+vendor/__pycache__/
+vendor/migrations/

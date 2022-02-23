@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+    <a class="btn btn-primary" href="{% url 'demo_admin:addItem' %}" role="button">Add item</a>
+    <a class="btn btn-success" href="{% url 'demo_admin:viewBiddings' %}" role="button">Biddings</a>
+    <a class="btn btn-danger" href="{% url 'demo_admin:logout' %}" role="button">Log out</a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">bid Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if items %}
+          {% for item in items %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.bid_price}}</td>
+          </tr>
+          {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}

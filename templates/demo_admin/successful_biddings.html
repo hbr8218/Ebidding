@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+    <a class="btn btn-primary" href="{% url 'demo_admin:dashboard' %}" role="button">Dashboard</a>
+    <a class="btn btn-danger" href="{% url 'demo_admin:logout' %}" role="button">Log out</a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item Id</th>
+            <th scope="col">Minimum bid</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if items %}
+          {% for item in items %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{item.item_id}}</td>
+            <td>{{item.min_bid_amount}}</td>
+          </tr>
+          {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}
